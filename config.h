@@ -67,9 +67,13 @@ static const char *rofi[]        = { "rofi", "-show", "run", NULL };
 static const char *lowerVolume[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
 static const char *raiseVolume[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
 static const char *mute[]        = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
+static const char *lowerBrightness[]  = { "brillo", "-U", "10", "-u", "150000", NULL };
+static const char *raiseBrightness[]  = { "brillo", "-A", "10", "-u", "150000", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ 0,            XF86XK_MonBrightnessDown,   spawn,           {.v = lowerBrightness } },
+	{ 0,            XF86XK_MonBrightnessUp,     spawn,           {.v = raiseBrightness } },
 	{ 0,            XF86XK_AudioLowerVolume,   spawn,          {.v = lowerVolume } },
 	{ 0,            XF86XK_AudioRaiseVolume,   spawn,          {.v = raiseVolume } },
 	{ 0,            XF86XK_AudioMute,          spawn,          {.v = mute } },
